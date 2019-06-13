@@ -2,7 +2,7 @@
   <div class="content">
     <button class="add-to-cart" @click="addToCart()">Add to Cart</button>
     <div class="top-row">
-      <div class="top part" :class="[saleBorderClass]"> <!-- :style="headBorderStyle"> -->
+      <div class="" :class="[saleBorderClass, 'top', 'part']"> <!-- :style="headBorderStyle"> -->
         <div class="robot-name">
           {{selectedRobot.head.title}}
           <span class="sale" v-if="selectedRobot.head.onSale">Sale!</span>
@@ -58,6 +58,8 @@
 
 <script>
 import availableParts from "../data/parts";
+import createdHookMixin from "./created-hook-mixin";
+
 export default {
   name: "RobotBuilder",
   data() {
@@ -71,6 +73,7 @@ export default {
       selectedBaseIndex: 0
     };
   },
+  mixins: [createdHookMixin],
   computed: {
     saleBorderClass(){
       return this.selectedRobot.head.onSale? 'sale-border':'';
