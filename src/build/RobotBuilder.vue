@@ -1,8 +1,12 @@
 <template>
-  <div>
+  <div class="content">
+    <button class="add-to-cart" @click="addToCart()">Add to Cart</button>
     <div class="top-row">
       <div class="top part">
-        <div class="robot-name">{{selectedRobot.head.title}} <span class="sale" v-if="selectedRobot.head.onSale">Sale!</span></div>
+        <div class="robot-name">
+          {{selectedRobot.head.title}}
+          <span class="sale" v-if="selectedRobot.head.onSale">Sale!</span>
+        </div>
         <img :src="selectedRobot.head.src" title="left arm">
         <button @click="selectPreviousHead()" class="prev-selector">&#9668;</button>
         <button @click="selectNextHead()" class="next-selector">&#9658;</button>
@@ -32,6 +36,23 @@
         <button v-on:click="selectNextBase()" class="next-selector">&#9658;</button>
       </div>
     </div>
+    <div>
+      <h1>Cart</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Robot</th>
+            <th class="cost">Cost</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(robot, index) in cart" v-bind:key="index">
+            <td>{{robot.head.title}}</td>
+            <td class="cost">{{robot.cost}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>
 
@@ -42,6 +63,7 @@ export default {
   data() {
     return {
       availableParts,
+      cart: [],
       selectedHeadIndex: 0,
       selectedLeftArmIndex: 0,
       selectedRightArmIndex: 0,
@@ -50,7 +72,7 @@ export default {
     };
   },
   computed: {
-    selectedRobot(){
+    selectedRobot() {
       return {
         head: availableParts.heads[this.selectedHeadIndex],
         leftArm: availableParts.arms[this.selectedLeftArmIndex],
@@ -61,6 +83,17 @@ export default {
     }
   },
   methods: {
+    addToCart() {
+      const robot = this.selectedRobot;
+      const cost =
+        robot.head.cost +
+        robot.leftArm.cost +
+        robot.torso.cost +
+        robot.rightArm.cost +
+        robot.base.cost;
+
+      this.cart.push(Object.assign({}, robot, { cost }));
+    },
     selectNextHead() {
       if (this.selectedHeadIndex < availableParts.heads.length - 1) {
         // eslint-disable-next-line
@@ -130,8 +163,8 @@ export default {
         console.log("previous base clicked");
         this.selectedBaseIndex -= 1;
       }
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -235,5 +268,27 @@ export default {
 
 .sale {
   color: red;
+}
+
+.content {
+  position: relative;
+}
+
+.add-to-cart {
+  position: absolute;
+  right: 30px;
+  width: 220px;
+  padding: 3px;
+  font-size: 16px;
+}
+
+td, th {
+  text-align: left;
+  padding: 5px;
+  padding-right: 20px;
+}
+
+.cost {
+  text-align: right;
 }
 </style>
