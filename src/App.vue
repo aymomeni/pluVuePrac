@@ -28,7 +28,11 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.content >>> .robot-name { 
+  color: red;
+  border: 2px solid blue;
+}
 header{
   background-color: #999;
   width: 1084px;
