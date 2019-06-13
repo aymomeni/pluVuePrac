@@ -2,7 +2,7 @@
   <div class="content">
     <button class="add-to-cart" @click="addToCart()">Add to Cart</button>
     <div class="top-row">
-      <div class="top part" :style="headBorderStyle"> 
+      <div class="top part" :class="[saleBorderClass]"> <!-- :style="headBorderStyle"> -->
         <div class="robot-name">
           {{selectedRobot.head.title}}
           <span class="sale" v-if="selectedRobot.head.onSale">Sale!</span>
@@ -72,6 +72,16 @@ export default {
     };
   },
   computed: {
+    saleBorderClass(){
+      return this.selectedRobot.head.onSale? 'sale-border':'';
+    },
+    headBorderStyle() {
+      // eslint-disable-next-line
+       console.log("got here2");
+      return {
+        border: this.selectedRobot.head.onSale ? '3px solid red' : '3px solid #aaa',
+        };
+    },
     selectedRobot() {
       return {
         head: availableParts.heads[this.selectedHeadIndex],
@@ -80,13 +90,6 @@ export default {
         torso: availableParts.torsos[this.selectedTorsoIndex],
         base: availableParts.bases[this.selectedBaseIndex]
       };
-    },
-    headBorderStyle() {
-      // eslint-disable-next-line
-       console.log("got here2");
-      return {
-        border: this.selectedRobot.head.onSale ? '3px solid red' : '3px solid #aaa',
-        };
     }
   },
   methods: {
@@ -297,5 +300,9 @@ td, th {
 
 .cost {
   text-align: right;
+}
+
+.sale-border{
+  border: 3px solid red;
 }
 </style>
