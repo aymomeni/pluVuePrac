@@ -14,24 +14,24 @@
       <PartSelector/>
     </div>
     <div class="bottom-row">
-      <div>
-        <h1>Cart</h1>
-        <table>
-          <thead>
-            <tr>
-              <th>Robot</th>
-              <th class="cost">Cost</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(robot, index) in cart" v-bind:key="index">
-              <td>{{robot.head.title}}</td>
-              <td class="cost">{{robot.cost}}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-            <PartSelector/>
+      <PartSelector/>
+    </div>
+    <div>
+      <h1>Cart</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Robot</th>
+            <th class="cost">Cost</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(robot, index) in cart" v-bind:key="index">
+            <td>{{robot.head.title}}</td>
+            <td class="cost">{{robot.cost}}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </template>
