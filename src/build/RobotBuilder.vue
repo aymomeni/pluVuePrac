@@ -2,8 +2,6 @@
   <div class="content">
     <div class="preview">
       <CollapsibleSection>
-      </CollapsibleSection>
-      <CollapsibleSection>
         <div class="preview-content">
           <div class="top-row">
             <img :src="selectedRobot.head.src"/>
@@ -140,9 +138,7 @@ export default {
   border: 3px solid #aaa;
 }
 .part {
-  img {
     width:165px;
-  }
 }
 .top-row {
   display:flex;
