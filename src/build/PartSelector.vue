@@ -29,8 +29,8 @@ export default {
    position: { 
      type: String,
      required: true,
-     validator: function(value) {
-       return ['left', 'right', 'top', 'base'].includes(value);
+     validator(value) {
+       return ['left', 'right', 'top', 'bottom', 'center'].includes(value);
      }
      } },
   data() {
@@ -47,12 +47,14 @@ export default {
         this.selectedPartIndex,
         this.parts.length,
       );
+      this.$emit('partSelected', this.selectedPart);
     },
     selectPreviousPart() {
       this.selectedPartIndex = getPreviousValidIndex(
         this.selectedPartIndex,
         this.parts.length,
       );
+      this.$emit('partSelected', this.selectedPart);
     },
   },
 };
