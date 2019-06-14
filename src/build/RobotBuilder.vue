@@ -1,35 +1,57 @@
 <template>
   <div class="content">
-    <button class="add-to-cart" @click="addToCart()">Add to Cart</button>
+    <div class="preview">
+      <CollapsibleSection>
+        <div class="preview-content">
+          <div class="top-row">
+            <img :src="selectedRobot.head.src"/>
+          </div>
+          <div class="middle-row">
+            <img :src="selectedRobot.leftArm.src" class="rotate-left"/>
+            <img :src="selectedRobot.torso.src"/>
+            <img :src="selectedRobot.rightArm.src" class="rotate-right"/>
+          </div>
+          <div class="bottom-row">
+            <img :src="selectedRobot.base.src"/>
+          </div>
+        </div>
+      </CollapsibleSection>
+      <button class="add-to-cart" @click="addToCart()">Add to Cart</button>
+    </div>
     <div class="top-row">
       <!-- <div class="robot-name">
           {{selectedRobot.head.title}}
           <span class="sale" v-if="selectedRobot.head.onSale">Sale!</span>
       </div>-->
-      <PartSelector 
-      :parts="availableParts.heads"
-      position="top"
-      @partSelected="part => selectedRobot.head = part" />
+      <PartSelector
+        :parts="availableParts.heads"
+        position="top"
+        @partSelected="part => selectedRobot.head = part"
+      />
     </div>
     <div class="middle-row">
-      <PartSelector 
-      :parts="availableParts.arms"
-      position="left"
-      @partSelected="part => selectedRobot.leftArm = part" />
-      <PartSelector 
-      :parts="availableParts.torsos"
-      position="center"
-      @partSelected="part => selectedRobot.torso = part"/>
-      <PartSelector 
-      :parts="availableParts.arms"
-      position="right"
-      @partSelected="part => selectedRobot.rightArm = part"/>
+      <PartSelector
+        :parts="availableParts.arms"
+        position="left"
+        @partSelected="part => selectedRobot.leftArm = part"
+      />
+      <PartSelector
+        :parts="availableParts.torsos"
+        position="center"
+        @partSelected="part => selectedRobot.torso = part"
+      />
+      <PartSelector
+        :parts="availableParts.arms"
+        position="right"
+        @partSelected="part => selectedRobot.rightArm = part"
+      />
     </div>
     <div class="bottom-row">
-      <PartSelector 
-      :parts="availableParts.bases"
-      position="bottom"
-      @partSelected="part => selectedRobot.base = part"/>
+      <PartSelector
+        :parts="availableParts.bases"
+        position="bottom"
+        @partSelected="part => selectedRobot.base = part"
+      />
     </div>
     <div>
       <h1>Cart</h1>
@@ -55,14 +77,15 @@
 import availableParts from "../data/parts";
 import createdHookMixin from "./created-hook-mixin";
 import PartSelector from "./PartSelector.vue";
+import CollapsibleSection from '../shared/CollapsibleSection.vue';
 
 export default {
   name: "RobotBuilder",
-  components: { PartSelector },
+  components: { PartSelector, CollapsibleSection },
   data() {
     return {
       availableParts,
-      cart: [], 
+      cart: [],
       selectedRobot: {
         head: {},
         leftArm: {},
@@ -96,15 +119,14 @@ export default {
         robot.torso.cost +
         robot.rightArm.cost +
         robot.base.cost;
-      console.log(robot.head.cost);
-      console.log(robot.leftArm.cost);
-      console.log(robot.torso.cost);
-      console.log(robot.rightArm.cost);
-      console.log(robot.base.cost);
-
-      this.cart.push(Object.assign({}, robot, {cost}));
-    },
-  },
+      // console.log(robot.head.cost);
+      // console.log(robot.leftArm.cost);
+      // console.log(robot.torso.cost);
+      // console.log(robot.rightArm.cost);
+      // console.log(robot.base.cost);
+      this.cart.push(Object.assign({}, robot, { cost }));
+    }
+  }
 };
 </script>
 
