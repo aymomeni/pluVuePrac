@@ -1,6 +1,14 @@
 <template>
   <div class="part" :class="position">
-    <img @click="showPartInfo()" :src="selectedPart.src" title="arm"/>
+    <router-link :to="{
+        name: 'Parts',
+        params: { 
+          id: this.selectedPart.id, 
+          partType: this.selectedPart.type 
+        }
+      }">
+      <img :src="selectedPart.src" title="arm">
+    </router-link>
     <button @click="selectPreviousPart()" class="prev-selector"></button>
     <button @click="selectNextPart()" class="next-selector"></button>
     <span class="sale" v-show="selectedPart.onSale">Sale!</span>
@@ -8,7 +16,6 @@
 </template>
 
 <script>
-
 function getPreviousValidIndex(index, length) {
   const deprecatedIndex = index - 1;
   return deprecatedIndex < 0 ? length - 1 : deprecatedIndex;
@@ -21,18 +28,18 @@ function getNextValidIndex(index, length) {
 
 export default {
   //props: ['parts', 'position'],
-  props: { 
-    parts: { 
+  props: {
+    parts: {
       type: Array,
       required: true
-   }, 
-  position: { 
-    type: String,
-    required: true,
-    validator(value) {
-      return ['left', 'right', 'top', 'bottom', 'center'].includes(value);
     },
-   },
+    position: {
+      type: String,
+      required: true,
+      validator(value) {
+        return ["left", "right", "top", "bottom", "center"].includes(value);
+      }
+    }
   },
   data() {
     return { selectedPartIndex: 0 };
@@ -40,44 +47,38 @@ export default {
   computed: {
     selectedPart() {
       return this.parts[this.selectedPartIndex];
-    },
+    }
   },
-  created(){
+  created() {
     this.emitSelectedPart();
   },
   methods: {
-    showPartInfo() {
-      this.$router.push({ name: 'Parts', 
-      params: {id: this.selectedPart.id, 
-      partType: this.selectedPart.type}});
-    },
     emitSelectedPart() {
-      this.$emit('partSelected', this.selectedPart);
+      this.$emit("partSelected", this.selectedPart);
     },
     selectNextPart() {
       this.selectedPartIndex = getNextValidIndex(
         this.selectedPartIndex,
-        this.parts.length,
+        this.parts.length
       );
       this.emitSelectedPart();
     },
     selectPreviousPart() {
       this.selectedPartIndex = getPreviousValidIndex(
         this.selectedPartIndex,
-        this.parts.length,
+        this.parts.length
       );
       this.emitSelectedPart();
-    },
-  },
+    }
+  }
 };
-
 </script>
 
 <style scoped>
 .part {
   position: relative;
-  width:165px;
-  height:165px;
+  width: 165px;
+  height: 165px;
   border: 3px solid #aaa;
 }
 .sale {
@@ -98,7 +99,7 @@ export default {
   top: -25px;
 }
 .part img {
-  width:165px;
+  width: 165px;
   cursor: pointer;
 }
 .top {
@@ -121,7 +122,7 @@ export default {
 }
 .prev-selector {
   position: absolute;
-  z-index:1;
+  z-index: 1;
   top: -3px;
   left: -28px;
   width: 25px;
@@ -129,26 +130,33 @@ export default {
 }
 .next-selector {
   position: absolute;
-  z-index:1;
+  z-index: 1;
   top: -3px;
   right: -28px;
   width: 25px;
   height: 171px;
 }
-.left .prev-selector:after,  .right .prev-selector:after{
-  content: '\25B2'
+.left .prev-selector:after,
+.right .prev-selector:after {
+  content: "\25B2";
 }
-.left .next-selector:after, .right .next-selector:after {
-  content: '\25BC'
+.left .next-selector:after,
+.right .next-selector:after {
+  content: "\25BC";
 }
-.top .prev-selector:after, .bottom .prev-selector:after, .center .prev-selector:after{
-  content: '\25C4'
+.top .prev-selector:after,
+.bottom .prev-selector:after,
+.center .prev-selector:after {
+  content: "\25C4";
 }
-.top .next-selector:after, .bottom .next-selector:after, .center .next-selector:after{
-  content: '\25BA'
+.top .next-selector:after,
+.bottom .next-selector:after,
+.center .next-selector:after {
+  content: "\25BA";
 }
-.center .prev-selector, .center .next-selector {
-  opacity:0.8;
+.center .prev-selector,
+.center .next-selector {
+  opacity: 0.8;
 }
 .left .prev-selector {
   top: -28px;
