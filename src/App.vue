@@ -3,11 +3,15 @@
     <header>
       <nav>
         <ul>
-          
           <li class="nav-item">
-            <router-link class="nav-link" :to= "{ name: 'Home' }">
-            <img class="logo" src="./assets/build-a-bot-logo.png">
-            Build-a-Bot
+            <router-link active-class="foo" class="nav-link" :to="{ name: 'Home' }" exact>
+              <img class="logo" src="./assets/build-a-bot-logo.png">
+              Build-a-Bot
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link active-class="foo" class="nav-link" :to="{ name: 'Build' }" exact>
+              Build
             </router-link>
           </li>
         </ul>
@@ -24,7 +28,7 @@
 //import RobotBuilder from './build/RobotBuilder.vue'; not needed with routing
 
 export default {
-  name: 'app',
+  name: "app"
   // components: {
   //   RobotBuilder,
   // },
@@ -32,11 +36,11 @@ export default {
 </script>
 
 <style>
-.content >>> .robot-name { 
+.content >>> .robot-name {
   color: red;
   border: 2px solid blue;
 }
-header{
+header {
   background-color: #999;
   width: 1084px;
   margin: 0 auto;
@@ -55,12 +59,12 @@ ul {
   vertical-align: middle;
   height: 30px;
 }
-body{
+body {
   background: linear-gradient(to bottom, #555, #999);
   background-attachment: fixed;
 }
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
 }
 main {
   margin: 0 auto;
@@ -69,8 +73,11 @@ main {
   width: 1024px;
   min-height: 300px;
 }
-.nav-link{
+.nav-link {
   text-decoration: none;
   color: inherit;
+}
+.foo {
+  color: white;
 }
 </style>
