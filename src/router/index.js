@@ -4,6 +4,7 @@ import Router from 'vue-router';
 import HomePage from '../home/HomePage.vue';
 import RobotBuilder from '../build/RobotBuilder.vue';
 import PartInfo from '../parts/PartInfo.vue';
+import BrowseParts from '../parts/BrowseParts.vue';
 
 Vue.use(Router);
 
@@ -21,5 +22,9 @@ export default new Router({
         name: 'Parts',
         component: PartInfo,
         props: true,
+    }, {
+        path: '/parts/browse',
+        name: 'Browse',
+        component: BrowseParts,
     }],
 });
