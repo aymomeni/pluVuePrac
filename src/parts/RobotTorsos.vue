@@ -8,6 +8,7 @@
             <h4>{{torso.title}}</h4>
             <div>{{torso.description}}</div>
         </div>
+        <router-view></router-view>
     </div>
 </template>
 <script>

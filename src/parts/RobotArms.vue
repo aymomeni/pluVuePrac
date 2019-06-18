@@ -13,12 +13,9 @@
 import parts from "../data/parts";
 
 export default {
-  name: "robotArms",
+  name: "RobotArms",
   data() {
     return { arms: parts.arms };
   }
 };
 </script>
-  
-<style>
-</style>
