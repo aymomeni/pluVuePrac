@@ -14,6 +14,11 @@
               Build
             </router-link>
           </li>
+          <li class="nav-item cart">
+            <router-link active-class="foo" class="nav-link" :to="{ name: 'Build' }">
+              Build
+            </router-link>
+          </li>
         </ul>
       </nav>
     </header>

@@ -20,13 +20,17 @@
 
 <script>
 export default {
-  name: "Card"
+  name: "Card",
+  computed: {
+      cart(){
+          this.$store.state.cart;
+      },
+  }
 };
 </script>
 
 <style>
-td,
-th {
+td,th {
   padding: 5px;
 }
 .robot-title {
