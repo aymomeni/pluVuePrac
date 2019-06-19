@@ -21,10 +21,10 @@
       <aside class="aside">
         <router-view name="sidebar"></router-view>
       </aside>
+      <main>
+        <router-view/>
+      </main>
     </div>
-    <main>
-      <router-view/>
-    </main>
   </div>
 </template>
 
