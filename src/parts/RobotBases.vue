@@ -5,8 +5,8 @@
     where your robot needs to operate.
     They come in a variety of shapes and functions.
     <div v-for="(base, idx) in bases" :key="idx">
-      <h4>{{arm.title}}</h4>
-      <div>{{arm.description}}</div>
+      <h4>{{base.title}}</h4>
+      <div>{{base.description}}</div>
     </div>
   </div>
 </template>
@@ -17,7 +17,7 @@ import parts from "../data/parts";
 export default {
   name: "RobotBases",
   data() {
-    return { arms: parts.bases };
+    return { bases: parts.bases };
   },
 };
 </script>

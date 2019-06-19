@@ -16,6 +16,8 @@ import parts from '../data/parts';
 export default {
     name: 'RobotHeads',
     data(){
+        // eslint-disable-next-line
+        console.log("got here");
         return { heads: parts.heads};
     },
 }
