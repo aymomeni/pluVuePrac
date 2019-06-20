@@ -15,8 +15,8 @@
             </router-link>
           </li>
           <li class="nav-item cart">
-            <router-link active-class="foo" class="nav-link" :to="{ name: 'Build' }">
-              Build
+            <router-link class="nav-link" to="/cart" exact>
+              Cart
             </router-link>
           </li>
         </ul>
@@ -84,6 +84,11 @@ ul {
 .nav-link {
   text-decoration: none;
   color: inherit;
+}
+.nav-itme .cart {
+  position: relative;
+  margin-left: auto;
+  border-right: none;
 }
 .router-link-active {
   color: white;

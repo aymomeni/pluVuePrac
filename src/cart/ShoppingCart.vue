@@ -23,9 +23,9 @@ export default {
   name: "Card",
   computed: {
       cart(){
-          this.$store.state.cart;
+          return this.$store.state.cart;
       },
-  }
+  },
 };
 </script>
 
