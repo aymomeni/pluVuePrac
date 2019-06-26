@@ -7,7 +7,7 @@ export default new Vuex.Store({
     state: {
         cart: [], // default cart object that has a value (important)
     },
-    mutations: {
+    mutations: { // all changes must go through a mutation
         addRobotToCart(state, robot){
             state.cart.push(robot);
         },

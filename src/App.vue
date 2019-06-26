@@ -85,7 +85,7 @@ ul {
   text-decoration: none;
   color: inherit;
 }
-.nav-itme .cart {
+.nav-item.cart {
   position: relative;
   margin-left: auto;
   border-right: none;
