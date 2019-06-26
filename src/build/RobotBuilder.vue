@@ -53,7 +53,7 @@
         @partSelected="part => selectedRobot.base = part"
       />
     </div>
-    <div>
+    <!-- <div>
       <h1>Cart</h1>
       <table>
         <thead>
@@ -69,7 +69,7 @@
           </tr>
         </tbody>
       </table>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -134,7 +134,7 @@ export default {
       // console.log(robot.torso.cost);
       // console.log(robot.rightArm.cost);
       // console.log(robot.base.cost);
-      this.$store.commit('addRobotToCart', Object.assign({}, robot, {cost}));
+      this.$store.commit('addRobotToCart', Object.assign({}, robot, {cost})); // vue instance is aware of the store / object.assign does a deep copy of mutable values
       //this.cart.push(Object.assign({}, robot, { cost })); replaced by line above
       this.addedToCart = true;
     }
@@ -249,14 +249,14 @@ export default {
   padding:3px;
   font-size:16px;
 }
-td, th {
+/* td, th {
   text-align: left;
   padding: 5px;
   padding-right: 20px;
 }
 .cost {
   text-align: right;
-}
+} */
 .sale-border {
   border: 3px solid red;
 }
