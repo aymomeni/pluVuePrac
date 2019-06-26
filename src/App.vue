@@ -18,6 +18,9 @@
             <router-link class="nav-link" to="/cart" exact>
               Cart
             </router-link>
+            <div class="cart-items">
+              {{this.cart.length}}
+            </div>
           </li>
         </ul>
       </nav>
@@ -38,7 +41,12 @@
 //import RobotBuilder from './build/RobotBuilder.vue'; not needed with routing
 
 export default {
-  name: "app"
+  name: "app",
+  computed: {
+    cart(){
+      return this.$store.state.cart;
+    }
+  }
   // components: {
   //   RobotBuilder,
   // },
@@ -106,5 +114,16 @@ ul {
 }
 .foo{
   color: white;
+}
+.cart-items {
+  position: absolute;
+  top: -5px;
+  right: -9px;
+  font-size: 18px;
+  width: 20px;
+  text-align: center;
+  display: inline-block;
+  border-radius: 100px;
+  background-color: mediumseagreen;
 }
 </style>
