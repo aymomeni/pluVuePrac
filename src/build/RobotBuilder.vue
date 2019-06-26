@@ -140,8 +140,10 @@ export default {
       // console.log(robot.torso.cost);
       // console.log(robot.rightArm.cost);
       // console.log(robot.base.cost);
-      this.$store.commit('addRobotToCart', Object.assign({}, robot, {cost})); // vue instance is aware of the store / object.assign does a deep copy of mutable values
+      //this.$store.commit('addRobotToCart', Object.assign({}, robot, {cost})); // vue instance is aware of the store / object.assign does a deep copy of mutable values
       //this.cart.push(Object.assign({}, robot, { cost })); replaced by line above
+      this.$store.dispatch('addRobotToCart', Object.assign({}, robot, {cost} ))
+      .then(() => this.$router.push('/cart'));
       this.addedToCart = true;
     }
   }
