@@ -44,7 +44,7 @@ export default {
   name: "app",
   computed: {
     cart(){
-      return this.$store.state.robots.robots.cart;
+      return this.$store.state.robots.cart;
     }
   }
   // components: {
