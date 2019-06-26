@@ -13,7 +13,7 @@ export default new Vuex.Store({
         addRobotToCart(state, robot){
             state.cart.push(robot);
         },
-        updatParts(state, parts) {
+        updateParts(state, parts) {
             state.parts = parts;
         },
     },
@@ -21,7 +21,8 @@ export default new Vuex.Store({
         getParts({commit}){
             axios.get('/api/parts')
             .then(result => commit('updateParts', result.data))
-            .catch();
+            // eslint-disable-next-line
+            .catch(console.error);
         },
     },
     getters: {
