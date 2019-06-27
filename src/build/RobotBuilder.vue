@@ -147,7 +147,7 @@ export default {
       this.addedToCart = true;
     }
   }
-};
+}
 </script>
 
 <style scoped>

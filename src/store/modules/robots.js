@@ -5,6 +5,7 @@ export default {
     state: {
         cart: [], // default cart object that has a value (important)
         parts: null,
+        foo: 'robots-foo',
     },
     mutations: { // all changes must go through a mutation
         addRobotToCart(state, robot) {
@@ -30,6 +31,9 @@ export default {
     getters: {
         cartSaleItems(state) {
             return state.cart.filter(item => item.head.onSale);
-        }
-    }
+        },
+        foo(state){
+            return `robots-getter/${state.foo}`;
+        },
+    },
 };
