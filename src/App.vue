@@ -47,13 +47,16 @@
 <script>
 //import HomePage from './home/HomePage.vue';
 //import RobotBuilder from './build/RobotBuilder.vue'; not needed with routing
+import { mapState} from 'vuex';
 
 export default {
   name: "app",
+
   computed: {
-    rootFoo(){
-      return this.$store.state.foo;
-    },
+      ...mapState({rootFoo: 'foo'}),
+    // rootFoo(){
+    //   return this.$store.state.foo;
+    // },
     usersFoo(){
       return this.$store.state.users.foo;
     },
