@@ -49,7 +49,7 @@ export default {
           return this.$store.state.robots.cart; // elements in the store can be accessed directly
       },
       cartSaleItems(){
-        return this.$store.getters.cartSaleItems;
+        return this.$store.getters['robots/cartSaleItems'];
       },
   },
 };

@@ -82,7 +82,7 @@ import CollapsibleSection from '../shared/CollapsibleSection.vue';
 export default {
   name: "RobotBuilder",
   created(){
-    this.$store.dispatch('getParts'); // dispatch is used for
+    this.$store.dispatch('robots/getParts'); // dispatch is used for
   },
   beforeRouteLeave(to, from, next){
     if(this.addedToCart){
@@ -142,7 +142,7 @@ export default {
       // console.log(robot.base.cost);
       //this.$store.commit('addRobotToCart', Object.assign({}, robot, {cost})); // vue instance is aware of the store / object.assign does a deep copy of mutable values
       //this.cart.push(Object.assign({}, robot, { cost })); replaced by line above
-      this.$store.dispatch('addRobotToCart', Object.assign({}, robot, {cost} ))
+      this.$store.dispatch('robots/addRobotToCart', Object.assign({}, robot, {cost} ))
       .then(() => this.$router.push('/cart'));
       this.addedToCart = true;
     }

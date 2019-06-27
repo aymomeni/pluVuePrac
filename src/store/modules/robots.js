@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 export default {
+    namespaced: true,
     state: {
         cart: [], // default cart object that has a value (important)
         parts: null,
